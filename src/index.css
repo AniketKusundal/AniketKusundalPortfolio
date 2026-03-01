@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@400;500;600;700&display=swap');
+
+/* ─── Base ─── */
+@layer base {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: #4f8ef7 #0a0f1e;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0a0f1e;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #4f8ef7, #7c5cf6);
+    border-radius: 999px;
+  }
+
+  html,
+  body,
+  #root {
+    @apply w-full min-h-screen overflow-x-hidden;
+  }
+
+  body {
+    @apply font-sans bg-ai-bg text-slate-200 antialiased;
+    transition: background 0.35s ease, color 0.35s ease;
+  }
+
+  html:not(.dark) body {
+    background: linear-gradient(135deg, #f0f4ff 0%, #f8faff 40%, #eef2ff 100%);
+    @apply text-slate-800;
+  }
+
+  html:not(.dark) {
+    scrollbar-color: #4f8ef7 #e8eef8;
+  }
+
+  html:not(.dark) ::-webkit-scrollbar-track {
+    background: #e8eef8;
+  }
+}
+
+/* ─── Utilities ─── */
+@layer utilities {
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-grad-primary bg-clip-text text-transparent;
+  }
+
+  .gradient-text-accent {
+    @apply bg-grad-accent bg-clip-text text-transparent;
+  }
+
+  /* Glass card */
+  .glass {
+    background: rgba(13, 18, 35, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(255, 255, 255, 0.05) inset;
+  }
+
+  html:not(.dark) .glass {
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(79, 142, 247, 0.18);
+    box-shadow: 0 4px 24px rgba(79, 142, 247, 0.08), 0 1px 0 rgba(255, 255, 255, 1) inset;
+  }
+
+  /* Section badge */
+  .ai-badge {
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase;
+    background: rgba(79, 142, 247, 0.12);
+    border: 1px solid rgba(79, 142, 247, 0.25);
+    color: #4f8ef7;
+  }
+
+  /* Glow line separator */
+  .glow-line {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #4f8ef7, #7c5cf6, transparent);
+  }
+
+  /* Shimmer button overlay */
+  .btn-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: skewX(-20deg);
+    animation: shimmer 2.5s linear infinite;
+  }
+
+  /* AI node dot */
+  .ai-dot {
+    @apply w-2 h-2 rounded-full bg-ai-primary animate-pulse-slow;
+    box-shadow: 0 0 8px #4f8ef7;
+  }
+
+  /* Neural grid bg */
+  .neural-grid {
+    background-image:
+      linear-gradient(rgba(79, 142, 247, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(79, 142, 247, 0.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  /* Section spacing */
+  .section-pad {
+    @apply px-5 sm:px-8 lg:px-16 py-24;
+  }
+
+  /* Card hover lift */
+  .card-lift {
+    @apply transition-all duration-300;
+  }
+
+  .card-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(79, 142, 247, 0.2), 0 0 0 1px rgba(79, 142, 247, 0.15);
+  }
+}
+
+/* ─── Scanline overlay for AI feel ─── */
+.scanlines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── Global Scroll Reveal ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  filter: blur(4px);
+  transition:
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--delay, 0ms);
+  will-change: opacity, transform, filter;
+}
+
+.reveal.reveal-left {
+  transform: translateX(-52px) translateY(8px);
+}
+
+.reveal.reveal-right {
+  transform: translateX(52px) translateY(8px);
+}
+
+.reveal.reveal-scale {
+  transform: scale(0.88) translateY(24px);
+}
+
+.reveal.reveal-zoom {
+  transform: scale(1.06);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
