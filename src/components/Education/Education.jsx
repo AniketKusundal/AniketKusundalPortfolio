@@ -32,7 +32,6 @@ const EDUCATION = [
   },
   {
     degree: "Higher Secondary (HSC) — Science",
-    institute: "M.B. Ghayal Jr. College, Aurangabad",
     university: "Maharashtra State Board",
     period: "2019 — 2021",
     status: "82.83%",
