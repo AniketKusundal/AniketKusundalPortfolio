@@ -1,0 +1,97 @@
+export const featuredProjects = [
+  {
+    id: 'wanderai',
+    number: '01',
+    title: 'WanderAI',
+    subtitle: 'AI-Powered Travel Planner',
+    tagline: 'Multi-day personalized travel itineraries with OCR ticket processing.',
+    category: 'MERN / AI Architecture',
+    featured: true,
+    tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Google Gemini API', 'Tesseract.js', 'JWT', 'Cloudinary'],
+    deployments: ['Vercel', 'Render', 'MongoDB Atlas'],
+    repo: 'https://github.com/AniketKusundal/Travel-Planner-App-AI-Itinerary-Generator',
+    live: null,
+    
+    // Case study content
+    caseStudy: {
+      overview: 'WanderAI is a full-stack AI-driven travel planning application that transforms how travelers create, organize, and manage multi-day trips. By pairing Google Gemini API reasoning with OCR document parsing, it automates itinerary planning and ticket data extraction.',
+      problem: 'Planning complex travel schedules across varied budgets and styles is time-consuming and fragmented. Travelers frequently have separate tickets, itineraries, and packing lists with no central intelligent hub.',
+      idea: 'An intelligent platform where travelers can input their destination, budget, duration, and travel style to generate tailored multi-day itineraries, alongside automated travel ticket scanning to automatically ingest passenger, flight, date, and seat details.',
+      build: 'Architected with a React.js client communicating with protected Node.js/Express REST APIs. Integrated Google Gemini API for intelligent day-by-day scheduling and dynamic packing checklists, Tesseract.js for OCR ticket analysis, and Cloudinary for document handling.',
+      keyFeatures: [
+        'Personalized Multi-Day Itineraries based on destination, duration, budget, and travel style',
+        'OCR-Based Travel Ticket Processing using Tesseract.js for PDF parsing and automatic extraction of passenger, flight, date, destination, seat, and gate information',
+        'JWT Authentication & Protected RESTful APIs ensuring secure user session and itinerary management',
+        'Cloudinary File Storage for high-speed cloud ticket and asset persistence',
+        'AI-Powered Packing Checklists tailored to destination climate and travel duration',
+        'Server-Side PDF Itinerary Generation for offline travel access and printing',
+      ],
+      deployment: 'Deployed with client on Vercel, backend microservices on Render, and database cluster hosted on MongoDB Atlas.',
+      whatILearned: 'Engineered robust multipart document pipelines, managed OCR processing latency asynchronously, optimized prompt structures for reliable JSON outputs from Gemini, and implemented secure token authentication flows.',
+    },
+  },
+  {
+    id: 'resumatch-ai',
+    number: '02',
+    title: 'ResuMatch AI',
+    subtitle: 'AI-Powered Resume Analyzer',
+    tagline: 'ATS-readiness platform with JD matching & keyword gap analysis.',
+    category: 'MERN / Career Tech',
+    featured: true,
+    tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Mongoose', 'Google Gemini API', 'Multer', 'pdf-parse', 'Cloudinary', 'JWT'],
+    deployments: ['Vercel', 'Render'],
+    repo: 'https://github.com/AniketKusundal/AI-Resume-Analyzer',
+    live: null,
+    
+    // Case study content
+    caseStudy: {
+      overview: 'ResuMatch AI is a full-stack career platform designed to bridge the gap between job seekers and Applicant Tracking Systems (ATS). It scans resumes against target job descriptions, computes ATS readiness scores, and provides actionable recommendations.',
+      problem: 'Candidates often submit resumes without understanding how automated ATS parsers evaluate keyword alignment, resulting in missed interview opportunities despite having qualifying skills.',
+      idea: 'An automated analyzer that extracts resume content, cross-references it with job descriptions, reveals skill gaps, and suggests tailored improvements using the Gemini API.',
+      build: 'Built an end-to-end PDF processing pipeline with Multer and pdf-parse for text extraction. Integrated Google Gemini API to analyze context, compare skills against job descriptions, and generate granular ATS scores and missing keyword reports.',
+      keyFeatures: [
+        'ATS-Readiness Analysis & Scoring evaluating structural readability and keyword density',
+        'Job-Description Matching with granular keyword gap analysis and missing JD keyword identification',
+        'Tailored Resume Suggestions & actionable skill extraction for interview readiness',
+        'PDF Processing Pipeline using Multer, pdf-parse, and Cloudinary for seamless document extraction and cloud storage/viewing',
+        'Job Application Tracking system for organizing submissions and statuses',
+        'JWT/Bcrypt Authentication & Protected RESTful CRUD APIs with MongoDB/Mongoose integration',
+      ],
+      deployment: 'Frontend client deployed on Vercel, REST API service deployed on Render, with persistent cloud storage.',
+      whatILearned: 'Mastered server-side binary stream parsing from uploaded PDFs, engineered schema validation for complex scoring models, and crafted zero-hallucination prompts for career guidance extraction.',
+    },
+  },
+];
+
+export const secondaryProjects = [
+  {
+    id: 'react-news',
+    number: '03',
+    title: 'React News App',
+    category: 'Frontend / API',
+    description: 'A clean and responsive news aggregator with category-based filtering (Sports, Science, Entertainment, Business, Health, Technology) powered by News API integration.',
+    tech: ['React.js', 'REST API', 'Bootstrap', 'JavaScript'],
+    repo: 'https://github.com/AniketKusundal/React-News-App',
+    live: null,
+  },
+  {
+    id: 'e-learning-platform',
+    number: '04',
+    title: 'E-Learning Platform',
+    category: 'Full Stack',
+    description: 'A full-stack e-learning web platform with user signup/login, course purchase, trending catalog, feedback system, admin dashboard, and relational MySQL backend.',
+    tech: ['PHP', 'Bootstrap', 'JavaScript', 'MySQL'],
+    repo: 'https://github.com/AniketKusundal/E_Learning-Project/tree/main/myProject',
+    live: null,
+  },
+  {
+    id: 'textutils',
+    number: '05',
+    title: 'TextUtils App',
+    category: 'Utility Tool',
+    description: 'A lightweight text processing tool with character/word counting, case transformation, whitespace cleanup, copy-to-clipboard, and preview with dark mode.',
+    tech: ['React.js', 'JavaScript', 'CSS3'],
+    repo: 'https://github.com/AniketKusundal/TxtUtiles/tree/main/txtutiles',
+    live: null,
+  },
+];

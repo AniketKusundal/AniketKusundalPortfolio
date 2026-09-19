@@ -1,167 +1,135 @@
-import React, { useState, useEffect, useRef } from "react";
-import AboutImg from "../assets/About.png";
-import { useTheme } from "../context/ThemeContext";
-import {
-  FiMapPin, FiMail, FiPhone, FiCalendar,
-  FiStar, FiCode, FiLayers, FiUsers
-} from "react-icons/fi";
-import { HiSparkles } from "react-icons/hi2";
-
-function calcExpLabel() {
-  const now = new Date();
-  const totalMonths = (now.getFullYear() - 2025) * 12 + (now.getMonth() + 1 - 10);
-  if (totalMonths <= 0) return "<1mo";
-  const years = Math.floor(totalMonths / 12);
-  const months = totalMonths % 12;
-  if (years === 0) return `${months}mo`;
-  if (months === 0) return `${years}yr`;
-  return `${years}yr ${months}mo`;
-}
-
-const STATS = [
-  { icon: <FiCode size={20} />, number: "10+", label: "Projects Completed", color: "text-ai-primary" },
-  { icon: <FiCalendar size={20} />, number: calcExpLabel(), label: "Experience", color: "text-violet-400" },
-  { icon: <FiLayers size={20} />, number: "5+", label: "Technologies Mastered", color: "text-cyan-400" },
-  { icon: <FiUsers size={20} />, number: "100%", label: "Client Satisfaction", color: "text-emerald-400" },
-];
-
-const INFO_ROWS = [
-  { icon: <FiMapPin size={15} />, label: "Location", value: "Pune, Maharashtra, India" },
-  { icon: <FiMail size={15} />, label: "Email", value: "aniketgovindkusundal@gmail.com" },
-  { icon: <FiPhone size={15} />, label: "Phone", value: "+91 9175501971" },
-  { icon: <FiStar size={15} />, label: "Status", value: "Open to Work — Fresher/Junior" },
-];
-
-const SectionLabel = ({ children }) => (
-  <div className="ai-badge mb-4">
-    <HiSparkles size={12} /> {children}
-  </div>
-);
+import { motion } from 'framer-motion';
+import { personal } from '../data/personal';
+import profileImg from '../assets/aniket.png';
+import { FiMapPin, FiBookOpen, FiBriefcase, FiCode } from 'react-icons/fi';
 
 export default function About() {
-  const { isDarkMode } = useTheme();
-  const [visible, setVisible] = useState(false);
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => e.isIntersecting && setVisible(true), { threshold: 0.15 });
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, []);
-
   return (
-    <section
-      id="about"
-      ref={ref}
-      className={`relative overflow-hidden section-pad
-        ${isDarkMode
-          ? "bg-gradient-to-br from-ai-bg via-ai-bg2 to-ai-bg"
-          : "bg-gradient-to-br from-slate-50 via-blue-50/40 to-slate-50"
-        }`}
-    >
-      {/* Background decorators */}
-      <div className="absolute inset-0 neural-grid opacity-100" />
-      <div className="absolute top-0 right-0 w-96 h-96 rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(79,142,247,0.12) 0%, transparent 70%)", filter: "blur(60px)" }} />
-      <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(124,92,246,0.1) 0%, transparent 70%)", filter: "blur(60px)" }} />
+    <section id="about" className="section-pad pt-20">
+      <div className="section-container">
+        {/* Chapter Header */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.6 }}
+          className="flex items-center gap-3 mb-6"
+        >
+          <span className="chapter-label m-0">06 / ABOUT</span>
+          <span className="h-px w-8 bg-[#262626]" />
+          <span className="text-[11px] font-mono tracking-widest uppercase text-[#8A8A8A]">
+            PERSPECTIVE & BACKGROUND
+          </span>
+        </motion.div>
 
-      <div className="relative z-10 max-w-7xl mx-auto">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.7 }}
+          className="font-display font-bold text-[#F5F5F5] tracking-tight mb-16"
+          style={{ fontSize: 'clamp(32px, 5vw, 64px)' }}
+        >
+          BEHIND THE CODE.
+        </motion.h2>
 
-        {/* Header */}
-        <div className={`text-center mb-16 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <SectionLabel>About Me</SectionLabel>
-          <h2 className={`font-display text-4xl sm:text-5xl font-extrabold tracking-tight
-            ${isDarkMode ? "text-white" : "text-slate-800"}`}>
-            Who I <span className="gradient-text">Am</span>
-          </h2>
-          <div className="glow-line w-24 mx-auto mt-4" />
-        </div>
-
-        {/* Content grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
-          {/* LEFT — Image */}
-          <div className={`flex justify-center transition-all duration-700 delay-100
-            ${visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"}`}>
-            <div className="relative">
-              {/* Outer glow ring */}
-              <div className="absolute -inset-4 rounded-3xl"
-                style={{ background: "radial-gradient(circle, rgba(79,142,247,0.2) 0%, transparent 70%)", filter: "blur(20px)" }} />
-
-              {/* Image card */}
-              <div className="relative glass rounded-3xl overflow-hidden border border-ai-primary/15 w-[clamp(220px,35vw,300px)] h-[clamp(280px,44vw,380px)] card-lift">
-                <img src={AboutImg} alt="Aniket Kusundal" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-br from-ai-primary/10 via-transparent to-ai-purple/10 pointer-events-none" />
+        {/* Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Visual Profile (5 cols) */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-5 flex justify-center lg:justify-start"
+          >
+            <div className="relative max-w-[340px] w-full">
+              <div className="rounded-2xl overflow-hidden border border-[#262626] bg-[#141414] shadow-2xl">
+                <img
+                  src={profileImg}
+                  alt="Aniket Kusundal — MERN Stack Developer & Website Developer"
+                  className="w-full aspect-[4/5] object-cover grayscale contrast-105 hover:grayscale-0 transition-all duration-500"
+                  loading="lazy"
+                />
               </div>
 
-              {/* Floating tag */}
-              <div className="absolute -bottom-4 -right-4 px-4 py-3 rounded-2xl bg-grad-primary text-white shadow-glow-blue"
-                style={{ animation: "floatY 4s ease-in-out infinite" }}>
-                <div className="text-lg font-black leading-none">Full Stack</div>
-                <div className="text-[10px] text-white/80 font-semibold">Developer</div>
+              {/* Status pill overlay */}
+              <div className="absolute -bottom-4 right-4 bg-[#141414]/95 border border-[#262626] backdrop-blur-md rounded-xl p-4 shadow-xl font-mono text-xs">
+                <div className="text-[#F5F5F5] font-bold">Aniket Kusundal</div>
+                <div className="text-[11px] text-[#E8734A] mt-0.5">
+                  Website Developer @ DigiSevaks
+                </div>
+                <div className="text-[10px] text-[#8A8A8A] mt-1">Pune, Maharashtra</div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* RIGHT — Content */}
-          <div className={`transition-all duration-700 delay-200
-            ${visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"}`}>
-
-            <h3 className={`text-2xl sm:text-3xl font-extrabold mb-4 font-display tracking-tight
-              ${isDarkMode ? "text-white" : "text-slate-800"}`}>
-              Building Digital Experiences <br />
-              <span className="gradient-text">with Passion & Precision</span>
-            </h3>
-
-            <p className={`text-[15px] leading-relaxed mb-4 ${isDarkMode ? "text-slate-400" : "text-slate-500"}`}>
-              I&apos;m <strong className={isDarkMode ? "text-slate-200" : "text-slate-700"}>Aniket Govind Kusundal</strong>, a passionate
-              Full Stack Developer from Pune, currently pursuing my M.Sc. (Computer Applications)
-              at MES Abasaheb Garware College. I specialize in building modern, performant web
-              applications using the latest JavaScript ecosystem.
-            </p>
-            <p className={`text-[15px] leading-relaxed mb-6 ${isDarkMode ? "text-slate-400" : "text-slate-500"}`}>
-              Currently working as a <strong className={isDarkMode ? "text-slate-200" : "text-slate-700"}>React.js Intern at Sandhya SoftTech Pvt. Ltd.</strong>,
-              I focus on scalable frontend architecture, Firebase integrations, and polished UI components.
-              I love turning complex problems into elegant, simple designs.
+          {/* Editorial Biography (7 cols) */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="lg:col-span-7 space-y-6 text-[#8A8A8A] text-base sm:text-lg leading-relaxed"
+          >
+            <p className="text-[#F5F5F5] font-medium text-lg sm:text-xl">
+              I am a developer who believes software should be reliable, well-structured, and purposeful.
             </p>
 
-            {/* Info rows */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-              {INFO_ROWS.map(({ icon, label, value }) => (
-                <div key={label}
-                  className={`flex items-start gap-3 p-3 rounded-xl border transition-all duration-200
-                    ${isDarkMode
-                      ? "glass border-white/[0.06] hover:border-ai-primary/30"
-                      : "bg-white/60 border-slate-200 hover:border-ai-primary/30"
-                    }`}
-                >
-                  <span className="mt-0.5 text-ai-primary shrink-0">{icon}</span>
-                  <div>
-                    <div className={`text-[10px] font-bold uppercase tracking-wider mb-0.5 ${isDarkMode ? "text-slate-500" : "text-slate-400"}`}>{label}</div>
-                    <div className={`text-sm font-medium ${isDarkMode ? "text-slate-300" : "text-slate-700"}`}>{value}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <p>
+              My path started with a Bachelor’s degree in Computer Science from Deogiri Institute,
+              where I spent three years understanding algorithms, databases, and programming fundamentals.
+              Today, I am furthering that specialization through an M.Sc. in Computer Applications at
+              MES Abasaheb Garware College in Pune.
+            </p>
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {STATS.map(({ icon, number, label, color }, i) => (
-                <div key={label}
-                  className={`glass border rounded-2xl p-4 text-center card-lift transition-all duration-700
-                    ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
-                    ${isDarkMode ? "border-white/[0.07]" : "border-slate-200"}
-                    hover:border-ai-primary/30`}
-                  style={{ transitionDelay: `${0.3 + i * 0.08}s` }}
-                >
-                  <span className={`${color} flex justify-center mb-2`}>{icon}</span>
-                  <div className={`text-2xl font-black ${color} mb-1`}>{number}</div>
-                  <div className={`text-[10px] font-semibold uppercase tracking-wide ${isDarkMode ? "text-slate-500" : "text-slate-400"}`}>{label}</div>
+            <p>
+              Currently, I work as a <strong className="text-[#F5F5F5]">Website Developer at DigiSevaks Media Agency</strong> in Pune,
+              where I build client websites using React.js and Tailwind CSS, maintain WordPress platforms,
+              and integrate interactive components for business clients.
+            </p>
+
+            <p>
+              When I am not delivering client projects, I build full-stack web applications with
+              Node.js, Express, MongoDB, and modern AI APIs—focusing on real document parsing, OCR pipelines,
+              and secure REST architectures.
+            </p>
+
+            {/* Quick Fact Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-[#222222] font-mono text-xs">
+              <div className="flex items-start gap-3 p-3 rounded-lg bg-[#141414] border border-[#222222]">
+                <FiMapPin className="text-[#E8734A] mt-0.5 shrink-0" size={15} />
+                <div>
+                  <span className="text-[#8A8A8A] block">BASE LOCATION</span>
+                  <span className="text-[#F5F5F5] font-semibold">{personal.location}</span>
                 </div>
-              ))}
+              </div>
+
+              <div className="flex items-start gap-3 p-3 rounded-lg bg-[#141414] border border-[#222222]">
+                <FiBookOpen className="text-[#E8734A] mt-0.5 shrink-0" size={15} />
+                <div>
+                  <span className="text-[#8A8A8A] block">ACADEMIC STANDING</span>
+                  <span className="text-[#F5F5F5] font-semibold">M.Sc. Computer Applications (CGPA 7.32)</span>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3 p-3 rounded-lg bg-[#141414] border border-[#222222]">
+                <FiBriefcase className="text-[#E8734A] mt-0.5 shrink-0" size={15} />
+                <div>
+                  <span className="text-[#8A8A8A] block">ACTIVE EMPLOYER</span>
+                  <span className="text-[#F5F5F5] font-semibold">{personal.currentRole.company}</span>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3 p-3 rounded-lg bg-[#141414] border border-[#222222]">
+                <FiCode className="text-[#E8734A] mt-0.5 shrink-0" size={15} />
+                <div>
+                  <span className="text-[#8A8A8A] block">CORE SPECIALIZATION</span>
+                  <span className="text-[#F5F5F5] font-semibold">MERN Stack & Client Websites</span>
+                </div>
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

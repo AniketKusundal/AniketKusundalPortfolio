@@ -1,61 +1,92 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/src/assets/name.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#05080f" />
+  <meta name="theme-color" content="#0B0B0B" />
 
   <!-- Primary SEO Meta Tags -->
-  <title>Aniket Govind Kusundal | Full Stack Developer Portfolio</title>
+  <title>Aniket Kusundal — MERN Stack Developer | React.js Developer</title>
   <meta name="description"
-    content="Portfolio of Aniket Govind Kusundal — Full Stack Developer specializing in React.js, Node.js, Express.js, MongoDB, and Firebase. Skilled in building modern, scalable web applications.">
+    content="Aniket Kusundal — MERN Stack Developer, React.js Developer, and Website Developer based in Pune, India. Building responsive client websites, full-stack web applications, REST APIs, and AI-powered projects." />
   <meta name="keywords"
-    content="Aniket Govind Kusundal, Aniket Kusundal, Full Stack Developer, React Developer, Node.js Developer, Portfolio, Web Developer India">
-  <meta name="author" content="Aniket Govind Kusundal">
+    content="Aniket Kusundal, MERN Stack Developer, React.js Developer, Full Stack Developer, Website Developer, Pune, Web Applications, AI Projects, DigiSevaks Media Agency, JavaScript, MongoDB, Node.js" />
+  <meta name="author" content="Aniket Govind Kusundal" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://aniketkusundal.netlify.app/" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Aniket Govind Kusundal | Full Stack Developer">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="Aniket Kusundal — MERN Stack Developer | React.js Developer" />
   <meta property="og:description"
-    content="I build modern and high-performance web applications using React, Node.js, Express, and MongoDB.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://YOUR-NETLIFY-URL.netlify.app/">
+    content="MERN Stack Developer and Website Developer building responsive client websites, production web applications, REST APIs, and AI-powered products in Pune, India." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://aniketkusundal.netlify.app/" />
+  <meta property="og:locale" content="en_US" />
 
-  <!-- Fonts preload for performance -->
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Aniket Kusundal — MERN Stack Developer | React.js Developer" />
+  <meta name="twitter:description"
+    content="MERN Stack Developer and Website Developer building responsive client websites, production web applications, REST APIs, and AI-powered products in Pune, India." />
+
+  <!-- Fonts: Space Grotesk for display headlines & Inter for body -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap"
     rel="stylesheet" />
 
-  <!-- STRUCTURED DATA (JSON-LD) -->
+  <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Aniket Govind Kusundal",
-      "jobTitle": "Full Stack Developer",
-      "url": "https://YOUR-NETLIFY-URL.netlify.app/",
+      "jobTitle": "MERN Stack Developer & Website Developer",
+      "url": "https://aniketkusundal.netlify.app/",
       "sameAs": [
-        "https://linkedin.com/in/aniket-kusundal",
+        "https://www.linkedin.com/in/aniket-kusundal",
         "https://github.com/AniketKusundal"
       ],
-      "description": "Full Stack Developer skilled in React.js, Node.js, Express.js, MongoDB, Firebase, and modern UI development."
+      "description": "MERN Stack Developer and Website Developer building responsive client websites, full-stack applications, and AI integrations.",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "DigiSevaks Media Agency",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Pune",
+          "addressRegion": "Maharashtra",
+          "addressCountry": "India"
+        }
+      },
+      "alumniOf": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "MES Abasaheb Garware College, Pune"
+        },
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Deogiri Institute of Technology and Management Studies, Aurangabad"
+        }
+      ],
+      "knowsAbout": [
+        "React.js",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "JavaScript",
+        "Full-Stack Web Development",
+        "Tailwind CSS",
+        "REST APIs",
+        "WordPress"
+      ]
     }
-    </script>
-  <!-- Inline theme restore — runs before paint to prevent flash -->
-  <script>
-    (function () {
-      var saved = localStorage.getItem('theme');
-      var dark = saved ? saved === 'dark' : true; // default to dark
-      if (dark) document.documentElement.classList.add('dark');
-      else document.documentElement.classList.remove('dark');
-    })();
   </script>
 </head>
 
-<body>
+<body class="bg-[#0B0B0B] text-[#F5F5F5] selection:bg-[#E8734A]/25 selection:text-white antialiased overflow-x-hidden">
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
