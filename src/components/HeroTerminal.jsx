@@ -23,11 +23,18 @@ export default function HeroTerminal() {
   ]);
 
   const [inputVal, setInputVal] = useState('');
-  const bottomRef = useRef(null);
+  const terminalOutputRef = useRef(null);
   const inputRef = useRef(null);
+  const isInitialMount = useRef(true);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    if (terminalOutputRef.current) {
+      terminalOutputRef.current.scrollTop = terminalOutputRef.current.scrollHeight;
+    }
   }, [history]);
 
   const executeCommand = (cmdText) => {
@@ -126,7 +133,7 @@ export default function HeroTerminal() {
         </div>
 
         {/* Output Stream */}
-        <div className="overflow-y-auto max-h-[200px] space-y-2.5 pr-1 scrollbar-thin">
+        <div ref={terminalOutputRef} className="overflow-y-auto max-h-[200px] space-y-2.5 pr-1 scrollbar-thin">
           {history.map((item, idx) => (
             <div key={idx} className="text-[11px]">
               {item.type === 'system' ? (
@@ -153,7 +160,6 @@ export default function HeroTerminal() {
               )}
             </div>
           ))}
-          <div ref={bottomRef} />
         </div>
       </div>
 
